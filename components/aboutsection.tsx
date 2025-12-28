@@ -67,7 +67,7 @@ export default function AboutSection() {
               <div className="space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
                 <p>— Based in Indonesia</p>
                 <p>— Learning TypeScript</p>
-                <p>— Probably listening to lo-fi</p>
+                <p>— Probably listening to reality club </p>
               </div>
             </div>
           </motion.div>
