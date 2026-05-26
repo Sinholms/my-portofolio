@@ -39,8 +39,15 @@ export default function MagneticButton({ children, className = '', href, onClick
   )
 
   if (href) {
+    const isExternal = href.startsWith('http')
+
     return (
-      <a href={href} className="inline-block">
+      <a
+        href={href}
+        target={isExternal ? '_blank' : undefined}
+        rel={isExternal ? 'noreferrer' : undefined}
+        className="inline-block"
+      >
         {content}
       </a>
     )

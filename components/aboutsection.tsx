@@ -1,74 +1,90 @@
 'use client'
 
-import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+
+const principles = [
+  {
+    title: 'Product-aware UI',
+    description: 'I care about hierarchy, spacing, responsive behavior, and whether the page helps users complete the task.',
+  },
+  {
+    title: 'Maintainable delivery',
+    description: 'I keep components readable, reuse patterns intentionally, and avoid adding complexity unless it earns its place.',
+  },
+  {
+    title: 'Data and AI mindset',
+    description: 'I enjoy building with APIs, exploring model workflows, and turning raw information into useful interfaces.',
+  },
+]
+
+const facts = [
+  ['Based in', 'Indonesia'],
+  ['Looking for', 'Junior developer, internship, and freelance opportunities'],
+  ['Working style', 'Clear communication, fast learning, careful implementation'],
+]
 
 export default function AboutSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="about" className="py-20 sm:py-32 bg-neutral-50 dark:bg-[#0a0a0a]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12" ref={ref}>
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Image */}
+    <section id="about" className="bg-neutral-50 py-20 dark:bg-[#0a0a0a] sm:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12" ref={ref}>
+        <div className="grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
           <motion.div
-            initial={{ opacity: 0, rotate: -3 }}
-            animate={isInView ? { opacity: 1, rotate: -2 } : {}}
-            transition={{ duration: 0.8 }}
-            whileHover={{ rotate: 0 }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7 }}
           >
-            <div className="relative aspect-square max-w-sm sm:max-w-lg mx-auto lg:mx-0 -rotate-2 hover:rotate-0 transition-transform duration-500">
-              <Image
-                src="/images/monkey.jpg"
-                alt="About"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 ring-1 ring-inset ring-black/10" />
-              {/* Decorative corner */}
-              <div className="absolute -bottom-4 -left-4 w-full h-full border-2 border-neutral-300 dark:border-neutral-700 -z-10" />
-            </div>
-          </motion.div>
-
-          {/* Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <p className="text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.3em] uppercase text-neutral-500 dark:text-neutral-400 mb-4 sm:mb-6">
+            <p className="section-eyebrow mb-5 text-xs font-semibold text-blue-700 dark:text-teal-300 sm:text-sm">
               About
             </p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-neutral-900 dark:text-white leading-tight mb-6 sm:mb-8">
-              Hi, I'm Falih<span className="inline-block animate-wave origin-bottom-right">👋</span>
+            <h2 className="text-3xl font-semibold tracking-tight text-neutral-950 dark:text-white sm:text-4xl md:text-5xl">
+              Building useful products with a careful frontend mindset.
             </h2>
-            <div className="space-y-4 sm:space-y-6 text-neutral-600 dark:text-neutral-400 leading-relaxed text-sm sm:text-base">
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.12 }}
+            className="space-y-6"
+          >
+            <div className="space-y-5 text-base leading-8 text-neutral-600 dark:text-neutral-300">
               <p>
-                I'm a developer from Indonesia passionate about the intersection of <span className="text-neutral-900 dark:text-white font-medium">Web Development</span>, <span className="text-neutral-900 dark:text-white font-medium">Artificial Intelligence</span>, and <span className="text-neutral-900 dark:text-white font-medium">Data</span>.
-                <span className="text-neutral-400 dark:text-neutral-500"> (Started with a broken WordPress blog at 15. It didn't survive, but my curiosity did.)</span>
+                I am Muhammad Falih Akbar, a developer from Indonesia focused on modern web development with React, Next.js, and TypeScript. My strongest interest is building interfaces that look polished, load clearly, and communicate the value of the product quickly.
               </p>
               <p>
-                These days I build web apps with <span className="text-neutral-900 dark:text-white font-medium">React</span> & <span className="text-neutral-900 dark:text-white font-medium">Next.js</span>, explore machine learning models, and dive deep into data analysis. 
-                I love turning raw data into insights and building intelligent solutions that actually work.
-              </p>
-              <p>
-                When I'm not staring at VS Code or Jupyter notebooks, I'm probably tweaking my Arch Linux setup for the hundredth time 
-                or exploring the latest AI tools and research.
+                I also explore artificial intelligence and data workflows, especially where they can support smarter web products. I like projects that combine clean UI, practical backend integration, and a clear reason for every feature.
               </p>
             </div>
 
-            {/* Currently */}
-            <div className="mt-8 sm:mt-12 pt-8 sm:pt-12 border-t border-neutral-200 dark:border-neutral-800">
-              <p className="text-xs sm:text-sm tracking-[0.2em] uppercase text-neutral-500 dark:text-neutral-400 mb-4">
-                Currently
-              </p>
-              <div className="space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
-                <p>— Based in Indonesia</p>
-                <p>— Learning TypeScript</p>
-                <p>— Probably listening to reality club </p>
-              </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              {principles.map((item, index) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.18 + index * 0.08 }}
+                  className="border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-950"
+                >
+                  <h3 className="mb-3 text-base font-semibold text-neutral-950 dark:text-white">{item.title}</h3>
+                  <p className="text-sm leading-6 text-neutral-600 dark:text-neutral-400">{item.description}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950">
+              {facts.map(([label, value]) => (
+                <div
+                  key={label}
+                  className="grid gap-2 border-b border-neutral-200 px-5 py-4 last:border-b-0 dark:border-neutral-800 sm:grid-cols-[140px_1fr]"
+                >
+                  <span className="text-sm font-medium text-neutral-500 dark:text-neutral-400">{label}</span>
+                  <span className="text-sm leading-6 text-neutral-800 dark:text-neutral-200">{value}</span>
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>

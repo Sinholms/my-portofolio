@@ -19,50 +19,55 @@ export default function Header() {
 
   const navLinks = [
     { label: 'About', href: '#about' },
-    { label: 'Work', href: '#projects' },
     { label: 'Skills', href: '#skills' },
+    { label: 'Projects', href: '#projects' },
     { label: 'Contact', href: '#contact' },
   ]
 
   return (
     <header
-      className={`fixed w-full top-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
         scrolled
-          ? 'bg-white/90 dark:bg-[#0f0f0f]/90 backdrop-blur-md'
-          : 'bg-transparent'
+          ? 'border-b border-neutral-200 bg-white/90 shadow-sm backdrop-blur-md dark:border-neutral-800 dark:bg-[#0f0f0f]/90'
+          : 'border-b border-transparent bg-white/70 backdrop-blur-sm dark:bg-[#0f0f0f]/70'
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-4 sm:py-6 flex justify-between items-center">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-12">
         <MagneticButton href="/">
-          <span className="text-lg font-semibold tracking-tight text-neutral-900 dark:text-white">
-            falih.dev
+          <span className="block text-sm font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-base">
+            Muhammad Falih Akbar
           </span>
         </MagneticButton>
 
-        {/* Desktop */}
-        <div className="hidden md:flex items-center gap-10">
-          <ul className="flex gap-8">
+        <div className="hidden items-center gap-8 md:flex">
+          <ul className="flex items-center gap-7">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors link-underline"
+                  className="link-underline text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-white"
                 >
                   {link.label}
                 </Link>
               </li>
             ))}
           </ul>
+          <Link
+            href="#contact"
+            className="rounded-md border border-neutral-900 px-4 py-2 text-sm font-semibold text-neutral-900 transition-colors hover:bg-neutral-900 hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-neutral-950"
+          >
+            Hire me
+          </Link>
           <ThemeToggle />
         </div>
 
-        {/* Mobile */}
-        <div className="flex md:hidden items-center gap-3">
+        <div className="flex items-center gap-3 md:hidden">
           <ThemeToggle />
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-neutral-900 dark:text-white"
+            className="grid h-9 w-9 place-items-center rounded-md border border-neutral-200 text-neutral-900 transition-colors hover:bg-neutral-50 dark:border-neutral-800 dark:text-white dark:hover:bg-neutral-900"
             aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <HiX size={24} /> : <HiMenu size={24} />}
           </button>
@@ -76,11 +81,11 @@ export default function Header() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white dark:bg-[#0f0f0f] border-t border-neutral-200 dark:border-neutral-800 overflow-hidden"
+            className="overflow-hidden border-t border-neutral-200 bg-white dark:border-neutral-800 dark:bg-[#0f0f0f] md:hidden"
           >
-            <ul className="px-4 py-6 space-y-4">
+            <ul className="space-y-2 px-4 py-5">
               {navLinks.map((link, i) => (
-                <motion.li 
+                <motion.li
                   key={link.href}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -89,7 +94,7 @@ export default function Header() {
                   <Link
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block text-lg text-neutral-900 dark:text-white py-2"
+                    className="block rounded-md px-2 py-3 text-base font-medium text-neutral-900 transition-colors hover:bg-neutral-50 dark:text-white dark:hover:bg-neutral-900"
                   >
                     {link.label}
                   </Link>

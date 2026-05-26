@@ -10,6 +10,8 @@ html {
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Subtle grain texture overlay */
@@ -28,6 +30,24 @@ body::before {
 
 html.dark body::before {
   opacity: 0.05;
+}
+
+.section-eyebrow {
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.surface-grid {
+  background-image:
+    linear-gradient(to right, rgba(23, 23, 23, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(23, 23, 23, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+html.dark .surface-grid {
+  background-image:
+    linear-gradient(to right, rgba(250, 250, 250, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(250, 250, 250, 0.06) 1px, transparent 1px);
 }
 
 /* Animated underline for links */
@@ -50,9 +70,9 @@ html.dark body::before {
   width: 100%;
 }
 
-/* Warm gradient text */
-.text-gradient-warm {
-  background: linear-gradient(135deg, #E07A5F, #C96A52);
+/* Accent gradient text */
+.text-gradient-accent {
+  background: linear-gradient(135deg, #2563eb, #0f766e);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -97,22 +117,22 @@ html.dark * {
 
 /* Selection color */
 ::selection {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(37, 99, 235, 0.16);
   color: inherit;
 }
 
 html.dark ::selection {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(45, 212, 191, 0.2);
 }
 
 /* Focus ring */
 *:focus-visible {
-  outline: 2px solid #171717;
+  outline: 2px solid #2563eb;
   outline-offset: 2px;
 }
 
 html.dark *:focus-visible {
-  outline-color: #fafafa;
+  outline-color: #2dd4bf;
 }
 
 /* Wave animation for emoji */

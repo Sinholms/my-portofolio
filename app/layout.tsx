@@ -2,12 +2,11 @@ import Providers from '@/components/providers'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import BackToTop from '@/components/backtotop'
-import PageLoader from '@/components/pageloader'
 import './globals.css'
 
 export const metadata = {
-  title: 'Falih Akbar | Portfolio',
-  description: 'Web, AI, and Data Enthusiast',
+  title: 'Muhammad Falih Akbar | Web Developer Portfolio',
+  description: 'Portfolio of Muhammad Falih Akbar, a web developer focused on React, Next.js, AI, and data-driven products.',
 }
 
 export default function RootLayout({
@@ -17,9 +16,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="bg-white dark:bg-[#0f0f0f] text-neutral-900 dark:text-white transition-colors">
+      <body className="bg-white text-neutral-900 antialiased transition-colors dark:bg-[#0f0f0f] dark:text-white">
         <Providers>
-          <PageLoader />
           <Header />
           <main>
             {children}
