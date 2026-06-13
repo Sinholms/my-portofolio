@@ -1,7 +1,5 @@
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 function escapeHtml(value: string) {
   const map: Record<string, string> = {
     '&': '&amp;',
@@ -27,6 +25,8 @@ export async function POST(req: Request) {
   if (!process.env.RESEND_API_KEY) {
     return Response.json({ success: false, error: 'Email service is not configured.' }, { status: 500 })
   }
+
+  const resend = new Resend(process.env.RESEND_API_KEY)
 
   try {
     const safeName = escapeHtml(name)

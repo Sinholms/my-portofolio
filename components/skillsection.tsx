@@ -33,12 +33,16 @@ interface SkillGroup {
   title: string
   description: string
   skills: Skill[]
+  accent: string
+  headerBg: string
 }
 
 const skillGroups: SkillGroup[] = [
   {
     title: 'Frontend',
     description: 'Building responsive, accessible, and polished product interfaces.',
+    accent: 'border-t-nb-accent',
+    headerBg: 'bg-nb-accent',
     skills: [
       { name: 'React', icon: SiReact },
       { name: 'Next.js', icon: SiNextdotjs },
@@ -52,6 +56,8 @@ const skillGroups: SkillGroup[] = [
   {
     title: 'Backend and data',
     description: 'Connecting interfaces to APIs, databases, and practical data workflows.',
+    accent: 'border-t-nb-accent-2',
+    headerBg: 'bg-nb-accent-2',
     skills: [
       { name: 'Node.js', icon: SiNodedotjs },
       { name: 'Express', icon: SiExpress },
@@ -66,6 +72,8 @@ const skillGroups: SkillGroup[] = [
   {
     title: 'Tools',
     description: 'Daily tooling for shipping, debugging, and maintaining projects.',
+    accent: 'border-t-nb-accent-4',
+    headerBg: 'bg-nb-accent-4',
     skills: [
       { name: 'Git', icon: SiGit },
       { name: 'Docker', icon: SiDocker },
@@ -81,7 +89,7 @@ export default function SkillsSection() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="skills" className="bg-white py-20 dark:bg-[#0f0f0f] sm:py-28">
+    <section id="skills" className="surface-grid bg-nb-cream py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -89,41 +97,42 @@ export default function SkillsSection() {
           transition={{ duration: 0.7 }}
           className="mb-12 max-w-3xl sm:mb-16"
         >
-          <p className="section-eyebrow mb-5 text-xs font-semibold text-blue-700 dark:text-teal-300 sm:text-sm">
+          <p className="section-eyebrow mb-5 inline-block border-3 border-nb-border bg-nb-accent-5 px-3 py-1 text-xs font-bold text-nb-text shadow-nb-sm sm:text-sm">
             Skills
           </p>
-          <h2 className="text-3xl font-semibold tracking-tight text-neutral-950 dark:text-white sm:text-4xl md:text-5xl">
-            A focused stack for modern web products.
+          <h2 className="font-heading text-3xl font-bold tracking-tight text-nb-text sm:text-4xl md:text-5xl">
+            A focused stack for <span className="border-2 border-nb-border bg-nb-accent-2 px-2 text-nb-text">modern web</span> products.
           </h2>
-          <p className="mt-5 text-base leading-8 text-neutral-600 dark:text-neutral-300">
+          <p className="mt-5 text-base leading-8 text-nb-muted">
             The portfolio is intentionally organized around the tools I can explain, use, and keep improving in real project contexts.
           </p>
         </motion.div>
 
-        <div className="grid gap-5 lg:grid-cols-3">
+        <div className="grid gap-6 lg:grid-cols-3">
           {skillGroups.map((group, groupIndex) => (
             <motion.div
               key={group.title}
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: groupIndex * 0.1 }}
-              className="border border-neutral-200 bg-neutral-50 p-5 dark:border-neutral-800 dark:bg-neutral-950"
+              className={`nb-card !border-t-[8px] ${group.accent} overflow-hidden`}
             >
-              <div className="mb-6">
-                <h3 className="text-xl font-semibold text-neutral-950 dark:text-white">{group.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-400">{group.description}</p>
+              <div className={`${group.headerBg} border-b-3 border-nb-border px-5 py-3`}>
+                <h3 className="font-heading text-lg font-bold text-nb-text">{group.title}</h3>
               </div>
-
-              <div className="grid gap-2">
-                {group.skills.map((skill) => (
-                  <div
-                    key={skill.name}
-                    className="flex min-h-11 items-center gap-3 border border-neutral-200 bg-white px-3 py-2 dark:border-neutral-800 dark:bg-[#0f0f0f]"
-                  >
-                    <skill.icon className="text-xl text-blue-700 dark:text-teal-300" />
-                    <span className="text-sm font-medium text-neutral-800 dark:text-neutral-200">{skill.name}</span>
-                  </div>
-                ))}
+              <div className="p-5">
+                <p className="mb-5 text-sm leading-6 text-nb-muted">{group.description}</p>
+                <div className="grid gap-2">
+                  {group.skills.map((skill) => (
+                    <div
+                      key={skill.name}
+                      className="flex min-h-11 items-center gap-3 border-2 border-nb-border bg-nb-bg px-3 py-2 shadow-nb-sm transition-all hover:shadow-nb hover:-translate-y-0.5"
+                    >
+                      <skill.icon className="text-xl text-nb-text" />
+                      <span className="text-sm font-bold text-nb-text">{skill.name}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}
@@ -133,11 +142,11 @@ export default function SkillsSection() {
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.35 }}
-          className="mt-6 grid gap-3 border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-950 sm:grid-cols-4"
+          className="nb-card mt-6 !bg-nb-dark !shadow-nb-accent p-5 sm:grid sm:grid-cols-4"
         >
           {workflow.map((item) => (
-            <div key={item} className="text-sm font-semibold text-neutral-800 dark:text-neutral-200">
-              <span className="mr-3 inline-block h-2 w-2 rounded-full bg-blue-700 dark:bg-teal-300" />
+            <div key={item} className="py-1 text-sm font-bold text-white">
+              <span className="mr-3 inline-block h-3 w-3 border-2 border-white bg-nb-accent" />
               {item}
             </div>
           ))}

@@ -1,8 +1,13 @@
-import Providers from '@/components/providers'
+import { Space_Grotesk } from 'next/font/google'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import BackToTop from '@/components/backtotop'
 import './globals.css'
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-space-grotesk',
+})
 
 export const metadata = {
   title: 'Muhammad Falih Akbar | Web Developer Portfolio',
@@ -15,16 +20,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className="bg-white text-neutral-900 antialiased transition-colors dark:bg-[#0f0f0f] dark:text-white">
-        <Providers>
-          <Header />
-          <main>
-            {children}
-          </main>
-          <Footer />
-          <BackToTop />
-        </Providers>
+    <html lang="en" className={spaceGrotesk.variable}>
+      <body className="bg-nb-bg text-nb-text antialiased">
+        <Header />
+        <main>
+          {children}
+        </main>
+        <Footer />
+        <BackToTop />
       </body>
     </html>
   )

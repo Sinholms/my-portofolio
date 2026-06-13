@@ -45,7 +45,7 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="bg-white py-20 dark:bg-[#0f0f0f] sm:py-28">
+    <section id="contact" className="surface-dots relative bg-nb-cream py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12" ref={ref}>
         <div className="grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
           <motion.div
@@ -53,30 +53,34 @@ export default function ContactSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
           >
-            <p className="section-eyebrow mb-5 text-xs font-semibold text-blue-700 dark:text-teal-300 sm:text-sm">
+            <p className="section-eyebrow mb-5 inline-block border-3 border-nb-border bg-nb-accent px-3 py-1 text-xs font-bold text-nb-text shadow-nb-sm sm:text-sm">
               Contact
             </p>
-            <h2 className="text-3xl font-semibold tracking-tight text-neutral-950 dark:text-white sm:text-4xl md:text-5xl">
-              Available for junior roles, internships, and project work.
+            <h2 className="font-heading text-3xl font-bold tracking-tight text-nb-text sm:text-4xl md:text-5xl">
+              Available for <span className="border-2 border-nb-border bg-nb-accent-2 px-2 text-nb-text">junior roles</span>, internships, and project work.
             </h2>
-            <p className="mt-5 max-w-xl text-base leading-8 text-neutral-600 dark:text-neutral-300">
+            <p className="mt-5 max-w-xl text-base leading-8 text-nb-muted">
               For recruiters and HRD teams, the fastest way to reach me is email or LinkedIn. I am open to discussing frontend, web app, AI/data, and junior developer opportunities.
             </p>
 
-            <div className="mt-8 divide-y divide-neutral-200 border-y border-neutral-200 dark:divide-neutral-800 dark:border-neutral-800">
+            <div className="mt-8 border-y-3 border-nb-border">
               <Link
                 href="mailto:falihakbar14@gmail.com"
-                className="flex items-center justify-between gap-4 py-4 text-neutral-800 transition-colors hover:text-blue-700 dark:text-neutral-200 dark:hover:text-teal-300"
+                className="flex items-center justify-between gap-4 border-b-3 border-nb-border py-4 text-nb-text transition-colors hover:bg-nb-accent/20"
               >
                 <span className="flex items-center gap-3">
-                  <HiMail className="text-xl text-neutral-400" />
-                  falihakbar14@gmail.com
+                  <span className="inline-flex h-10 w-10 items-center justify-center border-3 border-nb-border bg-nb-accent-3 shadow-nb-sm">
+                    <HiMail className="text-lg text-nb-text" />
+                  </span>
+                  <span className="font-bold">falihakbar14@gmail.com</span>
                 </span>
                 <HiArrowRight />
               </Link>
-              <div className="flex items-center gap-3 py-4 text-neutral-800 dark:text-neutral-200">
-                <HiLocationMarker className="text-xl text-neutral-400" />
-                Indonesia
+              <div className="flex items-center gap-3 py-4 text-nb-text">
+                <span className="inline-flex h-10 w-10 items-center justify-center border-3 border-nb-border bg-nb-accent-4 shadow-nb-sm">
+                  <HiLocationMarker className="text-lg text-white" />
+                </span>
+                <span className="font-bold">Indonesia</span>
               </div>
             </div>
 
@@ -85,7 +89,7 @@ export default function ContactSection() {
                 href="https://www.linkedin.com/in/muhammad-falih-akbar-364a1a321/"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-md border border-neutral-300 px-4 py-2.5 text-sm font-semibold text-neutral-800 transition-colors hover:border-neutral-950 hover:bg-neutral-50 dark:border-neutral-700 dark:text-neutral-200 dark:hover:border-white dark:hover:bg-neutral-900"
+                className="nb-btn nb-btn-accent"
               >
                 <SiLinkedin />
                 LinkedIn
@@ -94,7 +98,7 @@ export default function ContactSection() {
                 href="https://github.com/Sinholms"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-md border border-neutral-300 px-4 py-2.5 text-sm font-semibold text-neutral-800 transition-colors hover:border-neutral-950 hover:bg-neutral-50 dark:border-neutral-700 dark:text-neutral-200 dark:hover:border-white dark:hover:bg-neutral-900"
+                className="nb-btn nb-btn-secondary"
               >
                 <SiGithub />
                 GitHub
@@ -106,11 +110,14 @@ export default function ContactSection() {
             initial={{ opacity: 0, y: 24 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.12 }}
-            className="border border-neutral-200 bg-neutral-50 p-5 dark:border-neutral-800 dark:bg-neutral-950 sm:p-6"
+            className="nb-card !shadow-nb-xl p-5 sm:p-6"
           >
+            <div className="mb-5 border-b-3 border-nb-border bg-nb-accent-4 px-4 py-3">
+              <p className="font-heading text-sm font-bold text-white">Send a message</p>
+            </div>
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label htmlFor="name" className="mb-2 block text-sm font-semibold text-neutral-700 dark:text-neutral-300">
+                <label htmlFor="name" className="mb-2 block text-sm font-bold text-nb-text">
                   Name
                 </label>
                 <input
@@ -119,13 +126,13 @@ export default function ContactSection() {
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="Your name"
-                  className="w-full rounded-md border border-neutral-300 bg-white px-4 py-3 text-neutral-900 outline-none transition-colors placeholder:text-neutral-400 focus:border-blue-700 dark:border-neutral-700 dark:bg-[#0f0f0f] dark:text-white dark:focus:border-teal-300"
+                  className="nb-input"
                   required
                   disabled={isPending}
                 />
               </div>
               <div>
-                <label htmlFor="email" className="mb-2 block text-sm font-semibold text-neutral-700 dark:text-neutral-300">
+                <label htmlFor="email" className="mb-2 block text-sm font-bold text-nb-text">
                   Email
                 </label>
                 <input
@@ -134,13 +141,13 @@ export default function ContactSection() {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="name@company.com"
-                  className="w-full rounded-md border border-neutral-300 bg-white px-4 py-3 text-neutral-900 outline-none transition-colors placeholder:text-neutral-400 focus:border-blue-700 dark:border-neutral-700 dark:bg-[#0f0f0f] dark:text-white dark:focus:border-teal-300"
+                  className="nb-input"
                   required
                   disabled={isPending}
                 />
               </div>
               <div>
-                <label htmlFor="message" className="mb-2 block text-sm font-semibold text-neutral-700 dark:text-neutral-300">
+                <label htmlFor="message" className="mb-2 block text-sm font-bold text-nb-text">
                   Message
                 </label>
                 <textarea
@@ -149,7 +156,7 @@ export default function ContactSection() {
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   rows={5}
                   placeholder="Tell me about the role, project, or opportunity."
-                  className="w-full resize-none rounded-md border border-neutral-300 bg-white px-4 py-3 text-neutral-900 outline-none transition-colors placeholder:text-neutral-400 focus:border-blue-700 dark:border-neutral-700 dark:bg-[#0f0f0f] dark:text-white dark:focus:border-teal-300"
+                  className="nb-input resize-none"
                   required
                   disabled={isPending}
                 />
@@ -157,10 +164,10 @@ export default function ContactSection() {
 
               {status.message && (
                 <p
-                  className={`rounded-md border px-4 py-3 text-sm ${
+                  className={`border-3 px-4 py-3 text-sm font-bold ${
                     status.type === 'success'
-                      ? 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950 dark:text-emerald-300'
-                      : 'border-red-200 bg-red-50 text-red-800 dark:border-red-900 dark:bg-red-950 dark:text-red-300'
+                      ? 'border-nb-border bg-nb-accent-2 text-nb-text'
+                      : 'border-nb-border bg-nb-accent-3 text-nb-text'
                   }`}
                 >
                   {status.message}
@@ -170,7 +177,7 @@ export default function ContactSection() {
               <button
                 type="submit"
                 disabled={isPending}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-neutral-950 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200 sm:w-auto"
+                className="nb-btn nb-btn-primary w-full disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {isPending ? 'Sending...' : 'Send message'}
                 <HiArrowRight />

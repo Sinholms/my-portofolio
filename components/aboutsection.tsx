@@ -7,14 +7,20 @@ const principles = [
   {
     title: 'Product-aware UI',
     description: 'I care about hierarchy, spacing, responsive behavior, and whether the page helps users complete the task.',
+    accent: 'bg-nb-accent',
+    borderAccent: 'border-t-nb-accent',
   },
   {
     title: 'Maintainable delivery',
     description: 'I keep components readable, reuse patterns intentionally, and avoid adding complexity unless it earns its place.',
+    accent: 'bg-nb-accent-2',
+    borderAccent: 'border-t-nb-accent-2',
   },
   {
     title: 'Data and AI mindset',
     description: 'I enjoy building with APIs, exploring model workflows, and turning raw information into useful interfaces.',
+    accent: 'bg-nb-accent-4',
+    borderAccent: 'border-t-nb-accent-4',
   },
 ]
 
@@ -29,7 +35,11 @@ export default function AboutSection() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="about" className="bg-neutral-50 py-20 dark:bg-[#0a0a0a] sm:py-28">
+    <section id="about" className="surface-dots-dark nb-section-frame relative overflow-hidden py-20 sm:py-28">
+      {/* Decorative shape */}
+      <div className="absolute -top-6 left-12 hidden h-12 w-12 rotate-12 border-3 border-nb-border bg-nb-accent shadow-nb lg:block" />
+      <div className="absolute right-10 top-12 hidden h-16 w-16 rotate-12 border-3 border-white bg-nb-accent-4 shadow-[6px_6px_0_#00C9A7] lg:block" />
+
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12" ref={ref}>
         <div className="grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
           <motion.div
@@ -37,11 +47,13 @@ export default function AboutSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
           >
-            <p className="section-eyebrow mb-5 text-xs font-semibold text-blue-700 dark:text-teal-300 sm:text-sm">
+            <p className="section-eyebrow mb-5 inline-block border-3 border-nb-accent bg-nb-accent px-3 py-1 text-xs font-bold text-nb-text shadow-nb-sm sm:text-sm">
               About
             </p>
-            <h2 className="text-3xl font-semibold tracking-tight text-neutral-950 dark:text-white sm:text-4xl md:text-5xl">
-              Building useful products with a careful frontend mindset.
+            <h2 className="font-heading text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-5xl">
+              <span className="nb-heading-block">
+                Building useful products with a careful frontend mindset.
+              </span>
             </h2>
           </motion.div>
 
@@ -51,7 +63,7 @@ export default function AboutSection() {
             transition={{ duration: 0.7, delay: 0.12 }}
             className="space-y-6"
           >
-            <div className="space-y-5 text-base leading-8 text-neutral-600 dark:text-neutral-300">
+            <div className="space-y-5 text-base leading-8 text-neutral-300">
               <p>
                 I am Muhammad Falih Akbar, a developer from Indonesia focused on modern web development with React, Next.js, and TypeScript. My strongest interest is building interfaces that look polished, load clearly, and communicate the value of the product quickly.
               </p>
@@ -67,22 +79,23 @@ export default function AboutSection() {
                   initial={{ opacity: 0, y: 18 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.18 + index * 0.08 }}
-                  className="border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-950"
+                  className={`nb-card !border-t-[8px] !border-t-transparent ${item.borderAccent} p-5`}
                 >
-                  <h3 className="mb-3 text-base font-semibold text-neutral-950 dark:text-white">{item.title}</h3>
-                  <p className="text-sm leading-6 text-neutral-600 dark:text-neutral-400">{item.description}</p>
+                  <div className={`mb-4 inline-block h-4 w-4 border-2 border-nb-border ${item.accent}`} />
+                  <h3 className="font-heading mb-3 text-base font-bold text-nb-text">{item.title}</h3>
+                  <p className="text-sm leading-6 text-nb-muted">{item.description}</p>
                 </motion.div>
               ))}
             </div>
 
-            <div className="border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950">
+            <div className="nb-card !shadow-nb-accent">
               {facts.map(([label, value]) => (
                 <div
                   key={label}
-                  className="grid gap-2 border-b border-neutral-200 px-5 py-4 last:border-b-0 dark:border-neutral-800 sm:grid-cols-[140px_1fr]"
+                  className="grid gap-2 border-b-3 border-nb-border px-5 py-4 last:border-b-0 sm:grid-cols-[140px_1fr]"
                 >
-                  <span className="text-sm font-medium text-neutral-500 dark:text-neutral-400">{label}</span>
-                  <span className="text-sm leading-6 text-neutral-800 dark:text-neutral-200">{value}</span>
+                  <span className="text-sm font-bold text-nb-accent">{label}</span>
+                  <span className="text-sm leading-6 text-nb-text">{value}</span>
                 </div>
               ))}
             </div>

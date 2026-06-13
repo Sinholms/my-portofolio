@@ -11,16 +11,12 @@ export default function BackToTop() {
     const toggleVisibility = () => {
       setIsVisible(window.scrollY > 500)
     }
-
     window.addEventListener('scroll', toggleVisibility)
     return () => window.removeEventListener('scroll', toggleVisibility)
   }, [])
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    })
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   return (
@@ -30,10 +26,9 @@ export default function BackToTop() {
           initial={{ opacity: 0, scale: 0.5, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.5, y: 20 }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          whileTap={{ scale: 0.95 }}
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-50 grid h-11 w-11 place-items-center rounded-md border border-neutral-200 bg-white text-neutral-900 shadow-sm transition-colors hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:text-white dark:hover:border-neutral-700 dark:hover:bg-neutral-900"
+          className="nb-btn nb-btn-accent fixed bottom-6 right-6 z-50 !p-3"
           aria-label="Back to top"
         >
           <HiArrowUp className="text-xl" />

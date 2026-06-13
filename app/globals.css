@@ -1,20 +1,43 @@
 @import "tailwindcss";
 
-/* Enable dark mode with class strategy for Tailwind v4 */
-@variant dark (&:where(.dark, .dark *));
+@theme inline {
+  --color-nb-bg: #fff5eb;
+  --color-nb-surface: #ffffff;
+  --color-nb-accent: #ff6b2c;
+  --color-nb-accent-2: #00c9a7;
+  --color-nb-accent-3: #ff2e6c;
+  --color-nb-accent-4: #7b2ff7;
+  --color-nb-accent-5: #ffb800;
+  --color-nb-border: #1a1a1a;
+  --color-nb-shadow: #1a1a1a;
+  --color-nb-text: #1a1a1a;
+  --color-nb-muted: #404040;
+  --color-nb-cream: #ffe8d0;
+  --color-nb-dark: #141428;
 
-/* Smooth scrolling */
+  --font-heading: var(--font-space-grotesk), system-ui, sans-serif;
+
+  --shadow-nb: 6px 6px 0 #1a1a1a;
+  --shadow-nb-lg: 8px 8px 0 #1a1a1a;
+  --shadow-nb-sm: 3px 3px 0 #1a1a1a;
+  --shadow-nb-xl: 10px 10px 0 #1a1a1a;
+  --shadow-nb-hover: 2px 2px 0 #1a1a1a;
+  --shadow-nb-accent: 6px 6px 0 #ff6b2c;
+  --shadow-nb-accent-2: 6px 6px 0 #00c9a7;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  background-color: #FFF5EB;
+  color: #1a1a1a;
 }
 
-/* Subtle grain texture overlay */
 body::before {
   content: '';
   position: fixed;
@@ -24,118 +47,208 @@ body::before {
   height: 100%;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.03;
+  opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-}
-
-html.dark body::before {
-  opacity: 0.05;
 }
 
 .section-eyebrow {
   letter-spacing: 0.22em;
   text-transform: uppercase;
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
 }
 
 .surface-grid {
   background-image:
-    linear-gradient(to right, rgba(23, 23, 23, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(23, 23, 23, 0.06) 1px, transparent 1px);
+    linear-gradient(to right, rgba(26, 26, 26, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(26, 26, 26, 0.06) 1px, transparent 1px);
   background-size: 44px 44px;
 }
 
-html.dark .surface-grid {
-  background-image:
-    linear-gradient(to right, rgba(250, 250, 250, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(250, 250, 250, 0.06) 1px, transparent 1px);
+.surface-dots {
+  background-image: radial-gradient(circle, rgba(26, 26, 26, 0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-/* Animated underline for links */
-.link-underline {
+.surface-dots-dark {
+  background-color: #141428;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.12) 1.5px, transparent 1.5px);
+  background-size: 26px 26px;
+}
+
+.nb-section-frame {
   position: relative;
+  isolation: isolate;
 }
 
-.link-underline::after {
+.nb-section-frame::before {
   content: '';
   position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: currentColor;
-  transition: width 0.3s ease;
+  inset: 1rem;
+  z-index: -1;
+  border: 3px solid rgba(255, 255, 255, 0.16);
+  pointer-events: none;
 }
 
-.link-underline:hover::after {
+.nb-heading-block {
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 0.08em 0.18em;
+  background: #ffffff;
+  color: #1a1a1a;
+  box-shadow: 7px 7px 0 #ff6b2c;
+}
+
+.nb-dark-card {
+  border: 3px solid #ffffff;
+  background: #141428;
+  box-shadow: 7px 7px 0 #00c9a7;
+}
+
+/* Neobrutalism card */
+.nb-card {
+  border: 3px solid #1a1a1a;
+  box-shadow: 7px 7px 0 #1a1a1a;
+  border-radius: 0;
+  background: #FFFFFF;
+}
+
+/* Neobrutalism button */
+.nb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 3px solid #1a1a1a;
+  box-shadow: 4px 4px 0px #1a1a1a;
+  border-radius: 0;
+  font-weight: 700;
+  font-size: 0.875rem;
+  padding: 0.625rem 1.25rem;
+  transition: all 0.12s ease;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.nb-btn:focus-visible {
+  outline: 3px solid #7B2FF7;
+  outline-offset: 4px;
+}
+
+.nb-btn:hover {
+  box-shadow: 2px 2px 0px #1a1a1a;
+  transform: translate(2px, 2px);
+}
+
+.nb-btn:active {
+  box-shadow: 0px 0px 0px #1a1a1a;
+  transform: translate(4px, 4px);
+}
+
+.nb-btn-primary {
+  background: #FF6B2C;
+  color: #1a1a1a;
+}
+
+.nb-btn-primary:hover {
+  background: #FF8A55;
+}
+
+.nb-btn-secondary {
+  background: #FFFFFF;
+  color: #1a1a1a;
+}
+
+.nb-btn-secondary:hover {
+  background: #FFE8D0;
+}
+
+.nb-btn-accent {
+  background: #00C9A7;
+  color: #1a1a1a;
+}
+
+.nb-btn-accent:hover {
+  background: #2DD4B5;
+}
+
+.nb-btn-danger {
+  background: #FF2E6C;
+  color: #1a1a1a;
+}
+
+.nb-btn-danger:hover {
+  background: #FF5A8A;
+}
+
+/* Neobrutalism input */
+.nb-input {
   width: 100%;
+  border: 3px solid #1a1a1a;
+  box-shadow: 4px 4px 0px #1a1a1a;
+  border-radius: 0;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  background: #FFFFFF;
+  color: #1a1a1a;
+  outline: none;
+  transition: all 0.15s ease;
 }
 
-/* Accent gradient text */
-.text-gradient-accent {
-  background: linear-gradient(135deg, #2563eb, #0f766e);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+.nb-input::placeholder {
+  color: #a3a3a3;
 }
 
-/* Custom Scrollbar - Minimal */
+.nb-input:focus {
+  border-color: #7B2FF7;
+  box-shadow: 4px 4px 0px #7B2FF7;
+}
+
+/* Decorative shapes */
+.nb-shape {
+  position: absolute;
+  border: 3px solid #1a1a1a;
+  pointer-events: none;
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f5f5f5;
+  background: #FFF5EB;
+  border-left: 3px solid #1a1a1a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #a3a3a3;
-  border-radius: 4px;
+  background: #FF6B2C;
+  border: 2px solid #1a1a1a;
+  border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #737373;
+  background: #FF8A55;
 }
 
-/* Dark mode scrollbar */
-html.dark ::-webkit-scrollbar-track {
-  background: #171717;
-}
-
-html.dark ::-webkit-scrollbar-thumb {
-  background: #525252;
-}
-
-/* Firefox scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #a3a3a3 #f5f5f5;
+  scrollbar-color: #FF6B2C #FFF5EB;
 }
 
-html.dark * {
-  scrollbar-color: #525252 #171717;
-}
-
-/* Selection color */
+/* Selection */
 ::selection {
-  background: rgba(37, 99, 235, 0.16);
-  color: inherit;
-}
-
-html.dark ::selection {
-  background: rgba(45, 212, 191, 0.2);
+  background: #FF6B2C;
+  color: #1a1a1a;
 }
 
 /* Focus ring */
 *:focus-visible {
-  outline: 2px solid #2563eb;
+  outline: 3px solid #7B2FF7;
   outline-offset: 2px;
 }
 
-html.dark *:focus-visible {
-  outline-color: #2dd4bf;
-}
-
-/* Wave animation for emoji */
 @keyframes wave {
   0%, 100% { transform: rotate(0deg); }
   25% { transform: rotate(20deg); }
@@ -145,4 +258,22 @@ html.dark *:focus-visible {
 .animate-wave {
   animation: wave 2.5s ease-in-out infinite;
   display: inline-block;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(3deg); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
 }
