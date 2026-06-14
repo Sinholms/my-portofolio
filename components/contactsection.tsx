@@ -4,7 +4,8 @@ import Link from 'next/link'
 import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { HiArrowRight, HiLocationMarker, HiMail } from 'react-icons/hi'
-import { SiGithub, SiLinkedin } from 'react-icons/si'
+import { SiGithub } from 'react-icons/si'
+import { FaLinkedin } from 'react-icons/fa6'
 
 type FormStatus = {
   type: 'idle' | 'success' | 'error'
@@ -12,7 +13,7 @@ type FormStatus = {
 }
 
 export default function ContactSection() {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const [formData, setFormData] = useState({ name: '', email: '', message: '', website: '' })
   const [status, setStatus] = useState<FormStatus>({ type: 'idle', message: '' })
   const [isPending, setIsPending] = useState(false)
   const ref = useRef(null)
@@ -33,7 +34,7 @@ export default function ContactSection() {
 
       if (response.ok && result?.success) {
         setStatus({ type: 'success', message: 'Message sent. I will reply through email as soon as possible.' })
-        setFormData({ name: '', email: '', message: '' })
+        setFormData({ name: '', email: '', message: '', website: '' })
       } else {
         setStatus({ type: 'error', message: result?.error || 'Failed to send message. Please email me directly.' })
       }
@@ -91,7 +92,7 @@ export default function ContactSection() {
                 rel="noreferrer"
                 className="nb-btn nb-btn-accent"
               >
-                <SiLinkedin />
+                <FaLinkedin />
                 LinkedIn
               </Link>
               <Link
@@ -116,6 +117,17 @@ export default function ContactSection() {
               <p className="font-heading text-sm font-bold text-white">Send a message</p>
             </div>
             <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="absolute left-[-10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+                <label htmlFor="website">Website</label>
+                <input
+                  id="website"
+                  type="text"
+                  value={formData.website}
+                  onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
               <div>
                 <label htmlFor="name" className="mb-2 block text-sm font-bold text-nb-text">
                   Name
@@ -128,6 +140,7 @@ export default function ContactSection() {
                   placeholder="Your name"
                   className="nb-input"
                   required
+                  maxLength={100}
                   disabled={isPending}
                 />
               </div>
@@ -143,6 +156,7 @@ export default function ContactSection() {
                   placeholder="name@company.com"
                   className="nb-input"
                   required
+                  maxLength={254}
                   disabled={isPending}
                 />
               </div>
@@ -158,6 +172,7 @@ export default function ContactSection() {
                   placeholder="Tell me about the role, project, or opportunity."
                   className="nb-input resize-none"
                   required
+                  maxLength={5000}
                   disabled={isPending}
                 />
               </div>

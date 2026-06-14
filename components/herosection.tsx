@@ -1,18 +1,10 @@
 'use client'
 
 import Link from 'next/link'
-import { motion, Variants } from 'framer-motion'
-import { SiGithub, SiLinkedin } from 'react-icons/si'
+import { motion } from 'framer-motion'
+import { SiGithub } from 'react-icons/si'
+import { FaLinkedin } from 'react-icons/fa6'
 import { HiArrowDown, HiArrowRight } from 'react-icons/hi'
-
-const letterVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.018, duration: 0.45, ease: 'easeOut' },
-  }),
-}
 
 function AnimatedText({
   text,
@@ -24,21 +16,14 @@ function AnimatedText({
   delay?: number
 }) {
   return (
-    <span className={className}>
-      {text.split('').map((char, i) => (
-        <motion.span
-          key={`${char}-${i}`}
-          custom={i + delay}
-          variants={letterVariants}
-          initial="hidden"
-          animate="visible"
-          className="inline-block"
-          style={{ whiteSpace: char === ' ' ? 'pre' : 'normal' }}
-        >
-          {char}
-        </motion.span>
-      ))}
-    </span>
+    <motion.span
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay, duration: 0.5, ease: 'easeOut' }}
+      className={className}
+    >
+      {text}
+    </motion.span>
   )
 }
 
@@ -71,20 +56,19 @@ export default function HeroSection() {
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.5 }}
-        className="animate-float absolute top-32 right-[12%] hidden h-20 w-20 border-3 border-nb-border bg-nb-accent shadow-nb lg:block"
+        className="absolute top-32 right-[12%] hidden h-20 w-20 rotate-3 border-3 border-nb-border bg-nb-accent shadow-nb lg:block"
       />
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.7 }}
-        className="animate-float absolute bottom-40 left-[8%] hidden h-14 w-14 border-3 border-nb-border bg-nb-accent-3 shadow-nb-sm lg:block"
-        style={{ animationDelay: '1.5s' }}
+        className="absolute bottom-40 left-[8%] hidden h-14 w-14 -rotate-6 border-3 border-nb-border bg-nb-accent-3 shadow-nb-sm lg:block"
       />
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.9 }}
-        className="animate-spin-slow absolute top-[60%] right-[6%] hidden h-10 w-10 border-3 border-nb-border bg-nb-accent-4 shadow-nb-sm lg:block"
+        className="absolute top-[60%] right-[6%] hidden h-10 w-10 rotate-12 border-3 border-nb-border bg-nb-accent-4 shadow-nb-sm lg:block"
       />
 
       <div className="relative mx-auto flex min-h-[calc(100vh-7rem)] w-full max-w-7xl items-center px-4 py-16 sm:px-6 lg:px-12">
@@ -101,7 +85,7 @@ export default function HeroSection() {
 
             <h1 className="font-heading mb-6 text-4xl font-bold leading-[1.02] tracking-tight text-nb-text sm:text-5xl md:text-6xl lg:text-7xl">
               <AnimatedText text="Muhammad" className="block" />
-              <AnimatedText text="Falih Akbar" className="block text-nb-accent-3" delay={8} />
+              <AnimatedText text="Falih Akbar" className="block text-nb-accent-3" delay={0.12} />
             </h1>
 
             <motion.p
@@ -150,7 +134,7 @@ export default function HeroSection() {
                 rel="noreferrer"
                 className="nb-btn nb-btn-secondary !p-2.5"
               >
-                <SiLinkedin size={20} />
+                <FaLinkedin size={20} />
               </Link>
             </motion.div>
           </div>
@@ -202,20 +186,11 @@ export default function HeroSection() {
           </motion.aside>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.1 }}
-          className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 lg:block"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="border-3 border-nb-border bg-nb-accent p-2 shadow-nb-sm"
-          >
+        <div className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 lg:block">
+          <div className="border-3 border-nb-border bg-nb-accent p-2 shadow-nb-sm">
             <HiArrowDown className="text-nb-text" size={18} />
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   )

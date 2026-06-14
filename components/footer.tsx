@@ -2,7 +2,8 @@
 
 import Link from 'next/link'
 import { HiArrowRight } from 'react-icons/hi'
-import { SiGithub, SiLinkedin } from 'react-icons/si'
+import { SiGithub } from 'react-icons/si'
+import { FaLinkedin } from 'react-icons/fa6'
 
 export default function Footer() {
   return (
@@ -59,7 +60,7 @@ export default function Footer() {
               className="nb-btn nb-btn-secondary !p-2.5"
               aria-label="LinkedIn"
             >
-              <SiLinkedin size={18} />
+              <FaLinkedin size={18} />
             </Link>
           </div>
         </div>
