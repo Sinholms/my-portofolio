@@ -5,7 +5,7 @@ import { useRef } from 'react'
 import type { IconType } from 'react-icons'
 import {
   SiArchlinux,
-  SiCss,
+  SiCss3,
   SiDocker,
   SiExpress,
   SiGit,
@@ -50,7 +50,7 @@ const skillGroups: SkillGroup[] = [
       { name: 'JavaScript', icon: SiJavascript },
       { name: 'Tailwind CSS', icon: SiTailwindcss },
       { name: 'HTML5', icon: SiHtml5 },
-      { name: 'CSS3', icon: SiCss },
+      { name: 'CSS3', icon: SiCss3 },
     ],
   },
   {
