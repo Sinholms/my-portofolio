@@ -11,7 +11,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
         <div className="nb-dark-card grid gap-8 p-6 lg:grid-cols-[1fr_auto] lg:items-end lg:p-8">
           <div>
-            <p className="section-eyebrow mb-4 inline-block border-3 border-nb-accent bg-nb-accent px-3 py-1 text-xs font-bold text-nb-text shadow-nb-sm">
+            <p className="section-eyebrow mb-4 inline-block border-3 border-nb-border bg-nb-accent px-3 py-1 text-xs font-bold text-nb-text shadow-nb-sm">
               Open to opportunities
             </p>
             <h2 className="font-heading max-w-2xl text-2xl font-bold leading-tight tracking-tight sm:text-3xl">
@@ -34,12 +34,12 @@ export default function Footer() {
             <Link href="#home" className="font-heading text-base font-bold text-white">
               Muhammad Falih Akbar
             </Link>
-            <p className="mt-1 text-sm font-medium text-neutral-400">
-              Web Developer — AI and Data Enthusiast
+              <p className="mt-1 text-sm font-medium text-white">
+                Open to junior, internship & freelance work
             </p>
           </div>
 
-          <p className="text-sm font-medium text-neutral-500">
+            <p className="text-sm font-medium text-white">
             © 2026 Muhammad Falih Akbar. Built with Next.js and TypeScript.
           </p>
 
@@ -48,7 +48,7 @@ export default function Footer() {
               href="https://github.com/Sinholms"
               target="_blank"
               rel="noreferrer"
-              className="nb-btn nb-btn-secondary !p-2.5"
+              className="nb-btn nb-btn-secondary !p-3"
               aria-label="GitHub"
             >
               <SiGithub size={18} />
@@ -57,7 +57,7 @@ export default function Footer() {
               href="https://www.linkedin.com/in/muhammad-falih-akbar-364a1a321/"
               target="_blank"
               rel="noreferrer"
-              className="nb-btn nb-btn-secondary !p-2.5"
+              className="nb-btn nb-btn-secondary !p-3"
               aria-label="LinkedIn"
             >
               <FaLinkedin size={18} />

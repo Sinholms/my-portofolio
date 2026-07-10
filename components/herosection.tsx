@@ -94,7 +94,7 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.45 }}
               className="max-w-2xl text-base leading-8 text-nb-muted sm:text-lg"
             >
-              Junior web developer focused on React, Next.js, TypeScript, and practical AI/data workflows. I build responsive interfaces with maintainable code, clear user flow, and recruiter-ready presentation.
+              Junior web developer who ships clean, responsive interfaces and learns fast. I turn practical AI and data ideas into products people actually enjoy using.
             </motion.p>
 
             <motion.div
@@ -154,9 +154,7 @@ export default function HeroSection() {
 
             <div className="p-5 sm:p-6">
               <div className="mb-6 border-b-3 border-nb-border pb-6">
-                <p className="section-eyebrow mb-3 text-xs font-bold text-nb-muted">
-                  Positioning
-                </p>
+                <p className="mb-3 text-xs font-bold text-nb-muted">Positioning</p>
                 <h2 className="font-heading text-2xl font-bold tracking-tight text-nb-text">
                   Frontend-minded developer with AI and data curiosity.
                 </h2>

@@ -28,6 +28,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
@@ -184,7 +185,7 @@ body {
 }
 
 .nb-input::placeholder {
-  color: #a3a3a3;
+  color: #404040;
 }
 
 .nb-input:focus {
@@ -234,17 +235,6 @@ body {
 *:focus-visible {
   outline: 3px solid #7B2FF7;
   outline-offset: 2px;
-}
-
-@keyframes wave {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(20deg); }
-  75% { transform: rotate(-15deg); }
-}
-
-.animate-wave {
-  animation: wave 2.5s ease-in-out infinite;
-  display: inline-block;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -101,7 +101,7 @@ function ProjectVisual({ project }: { project: Project }) {
           <div className={`mb-6 inline-flex h-16 w-16 items-center justify-center border-3 border-nb-border ${project.iconBg} shadow-nb-sm`}>
             <project.icon className="text-3xl text-nb-text" />
           </div>
-          <p className="section-eyebrow text-xs font-bold text-nb-text/70">{project.type}</p>
+          <span className="inline-block border-2 border-nb-border bg-white/90 px-2 py-1 text-xs font-bold text-nb-text shadow-nb-sm">{project.type}</span>
           <h3 className="font-heading mt-3 max-w-sm text-2xl font-bold tracking-tight text-nb-text">{project.title}</h3>
         </div>
 
@@ -130,7 +130,7 @@ export default function ProjectsSection() {
         >
           <div className="max-w-3xl">
             <p className="section-eyebrow mb-5 inline-block border-3 border-nb-border bg-nb-accent-2 px-3 py-1 text-xs font-bold text-nb-text shadow-nb-sm sm:text-sm">
-              Projects
+              Selected work
             </p>
             <h2 className="font-heading text-3xl font-bold tracking-tight text-nb-text sm:text-4xl md:text-5xl">
               Selected work with <span className="bg-nb-accent px-2">clear role</span> and stack.
@@ -156,10 +156,12 @@ export default function ProjectsSection() {
         <div className="space-y-8">
           {projects.map((project, index) => {
             const isExternal = project.link?.startsWith('http') ?? false
+            const projectId = `project-${project.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')}`
 
             return (
               <motion.article
                 key={project.title}
+                id={projectId}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.65, delay: index * 0.12 }}
@@ -170,9 +172,6 @@ export default function ProjectsSection() {
                 <div className="p-6 sm:p-8">
                   <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                     <div className="flex items-center gap-3">
-                      <span className="font-heading inline-flex h-9 w-9 items-center justify-center border-3 border-nb-border bg-nb-accent text-sm font-bold text-nb-text shadow-nb-sm">
-                        {index + 1}
-                      </span>
                       {project.featured && (
                         <span className="border-2 border-nb-border bg-nb-accent-3 px-3 py-1 text-xs font-bold uppercase tracking-wide text-nb-text shadow-nb-sm">
                           Featured collaboration

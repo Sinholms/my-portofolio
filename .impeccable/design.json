@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-10T00:00:00+07:00",
+  "title": "Design System: Muhammad Falih Akbar — Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "primary": { "role": "primary", "displayName": "Ember Orange", "canonical": "#FF6B2C", "tonalRamp": ["#7A2E10", "#A33F12", "#CC5020", "#FF6B2C", "#FF8A55", "#FFA980", "#FFC9B0", "#FFE6D9"] },
+      "accent-2": { "role": "secondary", "displayName": "Tide Teal", "canonical": "#00C9A7", "tonalRamp": ["#054A3E", "#076B58", "#00937A", "#00C9A7", "#33D6BB", "#66E3CE", "#99F0E1", "#CCF8F1"] },
+      "accent-3": { "role": "secondary", "displayName": "Hot Rose", "canonical": "#FF2E6C", "tonalRamp": ["#7A0E33", "#A31244", "#D11E57", "#FF2E6C", "#FF5A8A", "#FF85A8", "#FFB0C6", "#FFD8E3"] },
+      "accent-4": { "role": "tertiary", "displayName": "Electric Violet", "canonical": "#7B2FF7", "tonalRamp": ["#34106E", "#4A18A0", "#5E25D0", "#7B2FF7", "#9A5CF9", "#B98BFB", "#D6BCFD", "#ECDEFE"] },
+      "accent-5": { "role": "tertiary", "displayName": "Sunbeam Yellow", "canonical": "#FFB800", "tonalRamp": ["#7A5600", "#A87400", "#D19400", "#FFB800", "#FFC740", "#FFD980", "#FFE9B0", "#FFF4D9"] },
+      "neutral-bg": { "role": "neutral", "displayName": "Cream Base", "canonical": "#FFF5EB", "tonalRamp": ["#C9B7A3", "#DBCDBC", "#EAD9C8", "#FFF5EB", "#FFF8F0", "#FFFCFA", "#FFFFFF", "#FFFFFF"] },
+      "surface": { "role": "neutral", "displayName": "Card Surface", "canonical": "#FFFFFF", "tonalRamp": ["#D9D9D9", "#E2E2E2", "#EAEAEA", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF"] },
+      "cream": { "role": "neutral", "displayName": "Tint Panel", "canonical": "#FFE8D0", "tonalRamp": ["#C9B79A", "#DBCDB0", "#EAD9C0", "#FFE8D0", "#FFEFDD", "#FFF6EB", "#FFFCF6", "#FFFFFF"] },
+      "dark": { "role": "neutral", "displayName": "Indigo Void", "canonical": "#141428", "tonalRamp": ["#08081A", "#0E0E20", "#141428", "#1E1E3A", "#2A2A4E", "#3A3A63", "#4C4C7E", "#6A6AA0"] },
+      "border": { "role": "neutral", "displayName": "Ink Border / Shadow", "canonical": "#1a1a1a", "tonalRamp": ["#000000", "#0D0D0D", "#1a1a1a", "#2E2E2E", "#404040", "#595959", "#7A7A7A", "#9A9A9A"] },
+      "text": { "role": "neutral", "displayName": "Ink Text", "canonical": "#1a1a1a", "tonalRamp": ["#000000", "#0D0D0D", "#1a1a1a", "#2E2E2E", "#404040", "#595959", "#7A7A7A", "#9A9A9A"] },
+      "muted": { "role": "neutral", "displayName": "Secondary Text", "canonical": "#404040", "tonalRamp": ["#1a1a1a", "#262626", "#333333", "#404040", "#595959", "#737373", "#8C8C8C", "#A6A6A6"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero name and major section headings. Space Grotesk 700." },
+      "body": { "displayName": "Body", "purpose": "Paragraphs and descriptions. Space Grotesk 400." },
+      "label": { "displayName": "Label / Kicker", "purpose": "Bordered kicker badges and uppercase meta. Space Grotesk 700, tracked 0.22em." },
+      "control": { "displayName": "Control", "purpose": "Buttons and inputs (.nb-btn, .nb-input). Space Grotesk 700, 0.875rem, tracked 0.04em." }
+    },
+    "shadows": [
+      { "name": "nb-sm", "value": "3px 3px 0 #1a1a1a", "purpose": "Small tiles, icon boxes, chips, badges." },
+      { "name": "nb", "value": "6px 6px 0 #1a1a1a", "purpose": "Default card and button shadow." },
+      { "name": "nb-lg", "value": "8px 8px 0 #1a1a1a", "purpose": "Hover lift on cards." },
+      { "name": "nb-xl", "value": "10px 10px 0 #1a1a1a", "purpose": "Featured cards and hero panel." },
+      { "name": "nb-hover", "value": "2px 2px 0 #1a1a1a", "purpose": "Resting shadow on a pressed/hovered button." },
+      { "name": "nb-accent", "value": "6px 6px 0 #FF6B2C", "purpose": "Orange-tinted offset on accent-framed cards." },
+      { "name": "nb-accent-2", "value": "6px 6px 0 #00C9A7", "purpose": "Teal-tinted offset on dark cards." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Default easing for entrance and state transitions (Framer Motion easeOut)." },
+      { "name": "enter-rise", "value": "opacity 0 + translateY(24px) -> opacity 1 + translateY(0), 0.6–0.7s", "purpose": "Section and card entrance on load / scroll-into-view." },
+      { "name": "press", "value": "translate(2px,2px) hover / translate(4px,4px) active, shadow collapses", "purpose": "Button press feedback." },
+      { "name": "reduced-motion", "value": "all motion durations ~0.01ms, scroll-behavior auto", "purpose": "Honored globally via prefers-reduced-motion media query." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "container", "value": "80rem (max-w-7xl)" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ember Orange call-to-action. Square corners, 3px ink border, hard shadow, press transform.",
+      "html": "<button class=\"ds-btn-primary\">View projects</button>",
+      "css": ".ds-btn-primary { display:inline-flex; align-items:center; gap:.5rem; background: var(--color-nb-accent, #FF6B2C); color: var(--color-nb-text, #1a1a1a); border:3px solid var(--color-nb-border, #1a1a1a); box-shadow:4px 4px 0 var(--color-nb-border, #1a1a1a); border-radius:0; font-family:'Space Grotesk',system-ui,sans-serif; font-weight:700; font-size:.875rem; letter-spacing:.04em; text-transform:uppercase; padding:.625rem 1.25rem; cursor:pointer; transition:all .12s ease; } .ds-btn-primary:hover { background:#FF8A55; box-shadow:2px 2px 0 var(--color-nb-border, #1a1a1a); transform:translate(2px,2px); } .ds-btn-primary:active { box-shadow:0 0 0 var(--color-nb-border, #1a1a1a); transform:translate(4px,4px); } .ds-btn-primary:focus-visible { outline:3px solid var(--color-nb-accent-4, #7B2FF7); outline-offset:4px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "White button on cream. Hover tints to Tint Panel.",
+      "html": "<button class=\"ds-btn-secondary\">Contact me</button>",
+      "css": ".ds-btn-secondary { display:inline-flex; align-items:center; gap:.5rem; background: var(--color-nb-surface, #FFFFFF); color: var(--color-nb-text, #1a1a1a); border:3px solid var(--color-nb-border, #1a1a1a); box-shadow:4px 4px 0 var(--color-nb-border, #1a1a1a); border-radius:0; font-family:'Space Grotesk',system-ui,sans-serif; font-weight:700; font-size:.875rem; letter-spacing:.04em; text-transform:uppercase; padding:.625rem 1.25rem; cursor:pointer; transition:all .12s ease; } .ds-btn-secondary:hover { background: var(--color-nb-cream, #FFE8D0); box-shadow:2px 2px 0 var(--color-nb-border, #1a1a1a); transform:translate(2px,2px); } .ds-btn-secondary:focus-visible { outline:3px solid var(--color-nb-accent-4, #7B2FF7); outline-offset:4px; }"
+    },
+    {
+      "name": "Accent Button",
+      "kind": "button",
+      "refersTo": "button-accent",
+      "description": "Tide Teal secondary CTA.",
+      "html": "<button class=\"ds-btn-accent\">LinkedIn</button>",
+      "css": ".ds-btn-accent { display:inline-flex; align-items:center; gap:.5rem; background: var(--color-nb-accent-2, #00C9A7); color: var(--color-nb-text, #1a1a1a); border:3px solid var(--color-nb-border, #1a1a1a); box-shadow:4px 4px 0 var(--color-nb-border, #1a1a1a); border-radius:0; font-family:'Space Grotesk',system-ui,sans-serif; font-weight:700; font-size:.875rem; letter-spacing:.04em; text-transform:uppercase; padding:.625rem 1.25rem; cursor:pointer; transition:all .12s ease; } .ds-btn-accent:hover { background:#2DD4B5; box-shadow:2px 2px 0 var(--color-nb-border, #1a1a1a); transform:translate(2px,2px); } .ds-btn-accent:focus-visible { outline:3px solid var(--color-nb-accent-4, #7B2FF7); outline-offset:4px; }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Neobrutalist card: white fill, 3px ink border, square corners, hard offset shadow. Featured variant adds 8px accent top border.",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card-title\">Web Development</h3><p class=\"ds-card-body\">Building responsive interfaces with React and Next.js.</p></div>",
+      "css": ".ds-card { background: var(--color-nb-surface, #FFFFFF); color: var(--color-nb-text, #1a1a1a); border:3px solid var(--color-nb-border, #1a1a1a); box-shadow:7px 7px 0 var(--color-nb-border, #1a1a1a); border-radius:0; padding:24px; transition:box-shadow .15s ease; } .ds-card:hover { box-shadow:8px 8px 0 var(--color-nb-border, #1a1a1a); } .ds-card-title { font-family:'Space Grotesk',system-ui,sans-serif; font-weight:700; font-size:1.25rem; margin:0 0 .75rem; } .ds-card-body { font-family:'Space Grotesk',system-ui,sans-serif; font-size:.875rem; line-height:1.5; color:var(--color-nb-muted, #404040); margin:0; }"
+    },
+    {
+      "name": "Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Square input with ink border and hard shadow; focus shifts to Electric Violet.",
+      "html": "<input class=\"ds-input\" placeholder=\"Your name\" />",
+      "css": ".ds-input { width:100%; background: var(--color-nb-surface, #FFFFFF); color: var(--color-nb-text, #1a1a1a); border:3px solid var(--color-nb-border, #1a1a1a); box-shadow:4px 4px 0 var(--color-nb-border, #1a1a1a); border-radius:0; padding:.75rem 1rem; font-family:'Space Grotesk',system-ui,sans-serif; font-size:.875rem; outline:none; transition:all .15s ease; } .ds-input::placeholder { color:#a3a3a3; } .ds-input:focus { border-color: var(--color-nb-accent-4, #7B2FF7); box-shadow:4px 4px 0 var(--color-nb-accent-4, #7B2FF7); }"
+    },
+    {
+      "name": "Tag / Chip",
+      "kind": "chip",
+      "refersTo": "",
+      "description": "Bordered, shadowed label chip. One accent per chip; sits on cream.",
+      "html": "<span class=\"ds-tag\">React</span>",
+      "css": ".ds-tag { display:inline-block; background: var(--color-nb-bg, #FFF5EB); color: var(--color-nb-text, #1a1a1a); border:3px solid var(--color-nb-border, #1a1a1a); box-shadow:3px 3px 0 var(--color-nb-border, #1a1a1a); border-radius:0; font-family:'Space Grotesk',system-ui,sans-serif; font-weight:700; font-size:.75rem; padding:.375rem .75rem; }"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": "",
+      "description": "Header nav link. Muted ink; full-bleed Ember Orange hover, no underline.",
+      "html": "<a class=\"ds-navlink\" href=\"#projects\">Projects</a>",
+      "css": ".ds-navlink { display:inline-block; padding:.5rem .75rem; font-family:'Space Grotesk',system-ui,sans-serif; font-weight:600; font-size:.875rem; color:var(--color-nb-muted, #404040); border-radius:0; transition:background .15s ease, color .15s ease; } .ds-navlink:hover { background: var(--color-nb-accent, #FF6B2C); color: var(--color-nb-text, #1a1a1a); }"
+    },
+    {
+      "name": "Kicker Badge",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Signature section opener: bordered, shadowed, accent-backed uppercase label. The brand's tracked-uppercase signature lives here, never as bare text.",
+      "html": "<span class=\"ds-kicker\">Projects</span>",
+      "css": ".ds-kicker { display:inline-block; background: var(--color-nb-accent-2, #00C9A7); color: var(--color-nb-text, #1a1a1a); border:3px solid var(--color-nb-border, #1a1a1a); box-shadow:3px 3px 0 var(--color-nb-border, #1a1a1a); border-radius:0; font-family:'Space Grotesk',system-ui,sans-serif; font-weight:700; font-size:.75rem; letter-spacing:.22em; text-transform:uppercase; padding:.25rem .75rem; }"
+    },
+    {
+      "name": "Heading Highlight",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Inline emphasized phrase: white box with Ember Orange offset shadow (nb-heading-block).",
+      "html": "<span class=\"ds-heading-block\">Building useful products</span>",
+      "css": ".ds-heading-block { display:inline; box-decoration-break:clone; -webkit-box-decoration-break:clone; padding:.08em .18em; background: var(--color-nb-surface, #FFFFFF); color: var(--color-nb-text, #1a1a1a); box-shadow:7px 7px 0 var(--color-nb-accent, #FF6B2C); font-family:'Space Grotesk',system-ui,sans-serif; font-weight:700; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Bold Blueprint",
+    "overview": "Neobrutalism with discipline: a confident, engineered poster system where every block is load-bearing. Hard ink borders and solid offset shadows give the page a printed, tactile weight, while a five-acid accent palette over a warm cream base keeps it playful rather than corporate. Structure sits underneath the loudness — the grid is intentional, the spacing breathes, and the motion is choreographed, not scattered. The site itself is the strongest proof of frontend ability, so the visual system must read as real, serious, and recruiter-ready within two minutes of arrival. The system rejects generic corporate-minimal SaaS templates, bland beige placeholders, cartoonish doodle illustrations, and muted washed-out palettes.",
+    "keyCharacteristics": [
+      "Square corners everywhere (radius 0); hardness is the signature.",
+      "Solid, zero-blur offset shadows in ink (#1a1a1a) — structure, not glow.",
+      "One family (Space Grotesk) carried in multiple weights.",
+      "A committed five-accent palette over a cream base; color used decisively.",
+      "Bordered kicker badges open every section — a deliberate brand system.",
+      "Framer Motion entrance choreography with reduced-motion honored."
+    ],
+    "rules": [
+      { "name": "The One Accent Per Block Rule", "body": "A given block commits to ONE accent role. Rotate the accent between sibling blocks instead of mixing two inside one card.", "section": "colors" },
+      { "name": "The Cream Base Rule", "body": "Full-bleed page backgrounds are Cream (#FFF5EB). White is reserved for cards and panels that sit on top of the cream.", "section": "colors" },
+      { "name": "The Saturated, Not Washed Rule", "body": "Every accent is high-chroma and unapologetic. Never desaturate an accent for elegance; shift lightness, not chroma.", "section": "colors" },
+      { "name": "The Single-Family Rule", "body": "Space Grotesk is the only typeface. Differentiate through weight, scale, and accent color — never a second font.", "section": "typography" },
+      { "name": "The Kicker Badge Rule", "body": "Section labels are bordered, shadowed, accent-backed badges. A lone tracked eyebrow above a heading is prohibited.", "section": "typography" },
+      { "name": "The Hard Shadow Rule", "body": "Every shadow is a solid #1a1a1a (or single accent) offset with 0 blur. Soft, blurred, or gradient shadows are forbidden.", "section": "elevation" },
+      { "name": "The Press Rule", "body": "Interactive elements translate toward their shadow on press: translate(2px,2px) hover, translate(4px,4px) active, shadow collapses to 0.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep every corner square (radius 0).",
+      "Do use solid, zero-blur ink shadows (6px 6px 0 #1a1a1a) for all elevation.",
+      "Do commit each block to a single accent; rotate accents across siblings.",
+      "Do open every section with a bordered, shadowed kicker badge.",
+      "Do press buttons on interaction: translate toward the shadow, collapse the offset.",
+      "Do keep body copy in ink/secondary on cream; verify >=4.5:1.",
+      "Do use Space Grotesk only; differentiate with weight, scale, accent color.",
+      "Do honor prefers-reduced-motion."
+    ],
+    "donts": [
+      "Don't use soft, blurred, or gradient shadows — the generic modern SaaS look this brand rejects.",
+      "Don't desaturate or mute the accents for elegance; muted washed-out palette is an anti-reference.",
+      "Don't put a white background on a full page; the base is Cream. White is for cards only.",
+      "Don't add a second typeface for contrast; single-family is deliberate.",
+      "Don't float a tiny uppercase tracked eyebrow above a heading without its bordered badge.",
+      "Don't introduce cartoonish doodle illustrations as personality; playful means loud color and structure.",
+      "Don't replace neobrutalist structure with glassmorphism, side-stripe accent borders, or gradient text.",
+      "Don't let body text fall below 4.5:1 contrast."
+    ]
+  }
+}

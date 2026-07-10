@@ -16,6 +16,9 @@ export default function ContactSection() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '', website: '' })
   const [status, setStatus] = useState<FormStatus>({ type: 'idle', message: '' })
   const [isPending, setIsPending] = useState(false)
+  const [emailError, setEmailError] = useState('')
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
@@ -23,6 +26,13 @@ export default function ContactSection() {
     e.preventDefault()
     setIsPending(true)
     setStatus({ type: 'idle', message: '' })
+
+    if (!emailRegex.test(formData.email)) {
+      setEmailError('Enter a valid email like name@company.com')
+      setIsPending(false)
+      return
+    }
+    setEmailError('')
 
     try {
       const response = await fetch('/api/send', {
@@ -55,7 +65,7 @@ export default function ContactSection() {
             transition={{ duration: 0.7 }}
           >
             <p className="section-eyebrow mb-5 inline-block border-3 border-nb-border bg-nb-accent px-3 py-1 text-xs font-bold text-nb-text shadow-nb-sm sm:text-sm">
-              Contact
+              Get in touch
             </p>
             <h2 className="font-heading text-3xl font-bold tracking-tight text-nb-text sm:text-4xl md:text-5xl">
               Available for <span className="border-2 border-nb-border bg-nb-accent-2 px-2 text-nb-text">junior roles</span>, internships, and project work.
@@ -152,13 +162,26 @@ export default function ContactSection() {
                   id="email"
                   type="email"
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, email: e.target.value })
+                    if (emailError) setEmailError('')
+                  }}
+                  onBlur={() => {
+                    if (formData.email && !emailRegex.test(formData.email)) {
+                      setEmailError('Enter a valid email like name@company.com')
+                    }
+                  }}
                   placeholder="name@company.com"
                   className="nb-input"
                   required
                   maxLength={254}
                   disabled={isPending}
                 />
+                {emailError && (
+                  <p className="mt-2 border-2 border-nb-border bg-nb-accent-3 px-3 py-2 text-xs font-bold text-nb-text">
+                    {emailError}
+                  </p>
+                )}
               </div>
               <div>
                 <label htmlFor="message" className="mb-2 block text-sm font-bold text-nb-text">

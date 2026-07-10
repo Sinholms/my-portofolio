@@ -5,17 +5,13 @@ import { useRef } from 'react'
 import type { IconType } from 'react-icons'
 import {
   SiArchlinux,
-  SiCss,
   SiDocker,
   SiExpress,
   SiGit,
-  SiHtml5,
   SiJavascript,
   SiMongodb,
-  SiMysql,
   SiNextdotjs,
   SiNodedotjs,
-  SiPhp,
   SiPostgresql,
   SiPrisma,
   SiPython,
@@ -27,6 +23,13 @@ import {
 interface Skill {
   name: string
   icon: IconType
+  level?: 'Advanced' | 'Intermediate' | 'Foundational'
+}
+
+const levelColor: Record<string, string> = {
+  Advanced: 'bg-nb-accent',
+  Intermediate: 'bg-nb-accent-3',
+  Foundational: 'bg-nb-accent-5',
 }
 
 interface SkillGroup {
@@ -44,13 +47,11 @@ const skillGroups: SkillGroup[] = [
     accent: 'border-t-nb-accent',
     headerBg: 'bg-nb-accent',
     skills: [
-      { name: 'React', icon: SiReact },
-      { name: 'Next.js', icon: SiNextdotjs },
-      { name: 'TypeScript', icon: SiTypescript },
-      { name: 'JavaScript', icon: SiJavascript },
-      { name: 'Tailwind CSS', icon: SiTailwindcss },
-      { name: 'HTML5', icon: SiHtml5 },
-      { name: 'CSS3', icon: SiCss },
+      { name: 'React', icon: SiReact, level: 'Advanced' },
+      { name: 'Next.js', icon: SiNextdotjs, level: 'Advanced' },
+      { name: 'TypeScript', icon: SiTypescript, level: 'Advanced' },
+      { name: 'JavaScript', icon: SiJavascript, level: 'Advanced' },
+      { name: 'Tailwind CSS', icon: SiTailwindcss, level: 'Advanced' },
     ],
   },
   {
@@ -59,14 +60,12 @@ const skillGroups: SkillGroup[] = [
     accent: 'border-t-nb-accent-2',
     headerBg: 'bg-nb-accent-2',
     skills: [
-      { name: 'Node.js', icon: SiNodedotjs },
-      { name: 'Express', icon: SiExpress },
-      { name: 'Python', icon: SiPython },
-      { name: 'PHP', icon: SiPhp },
-      { name: 'PostgreSQL', icon: SiPostgresql },
-      { name: 'MySQL', icon: SiMysql },
-      { name: 'MongoDB', icon: SiMongodb },
-      { name: 'Prisma', icon: SiPrisma },
+      { name: 'Node.js', icon: SiNodedotjs, level: 'Intermediate' },
+      { name: 'Express', icon: SiExpress, level: 'Intermediate' },
+      { name: 'Python', icon: SiPython, level: 'Intermediate' },
+      { name: 'PostgreSQL', icon: SiPostgresql, level: 'Intermediate' },
+      { name: 'MongoDB', icon: SiMongodb, level: 'Foundational' },
+      { name: 'Prisma', icon: SiPrisma, level: 'Intermediate' },
     ],
   },
   {
@@ -75,9 +74,9 @@ const skillGroups: SkillGroup[] = [
     accent: 'border-t-nb-accent-4',
     headerBg: 'bg-nb-accent-4',
     skills: [
-      { name: 'Git', icon: SiGit },
-      { name: 'Docker', icon: SiDocker },
-      { name: 'Arch Linux', icon: SiArchlinux },
+      { name: 'Git', icon: SiGit, level: 'Intermediate' },
+      { name: 'Docker', icon: SiDocker, level: 'Foundational' },
+      { name: 'Arch Linux', icon: SiArchlinux, level: 'Intermediate' },
     ],
   },
 ]
@@ -98,7 +97,7 @@ export default function SkillsSection() {
           className="mb-12 max-w-3xl sm:mb-16"
         >
           <p className="section-eyebrow mb-5 inline-block border-3 border-nb-border bg-nb-accent-5 px-3 py-1 text-xs font-bold text-nb-text shadow-nb-sm sm:text-sm">
-            Skills
+            My stack
           </p>
           <h2 className="font-heading text-3xl font-bold tracking-tight text-nb-text sm:text-4xl md:text-5xl">
             A focused stack for <span className="border-2 border-nb-border bg-nb-accent-2 px-2 text-nb-text">modern web</span> products.
@@ -129,7 +128,10 @@ export default function SkillsSection() {
                       className="flex min-h-11 items-center gap-3 border-2 border-nb-border bg-nb-bg px-3 py-2 shadow-nb-sm transition-all hover:shadow-nb hover:-translate-y-0.5"
                     >
                       <skill.icon className="text-xl text-nb-text" />
-                      <span className="text-sm font-bold text-nb-text">{skill.name}</span>
+                      <span className="flex-1 text-sm font-bold text-nb-text">{skill.name}</span>
+                      {skill.level && (
+                        <span className={`h-2.5 w-2.5 rounded-full border border-nb-border ${levelColor[skill.level]}`} title={skill.level} />
+                      )}
                     </div>
                   ))}
                 </div>
